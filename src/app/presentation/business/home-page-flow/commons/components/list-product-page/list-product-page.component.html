@@ -1,0 +1,50 @@
+
+<div class="container-list-product">
+     <!-- Search input  -->
+     <div class="container-list-product-search">
+        <form [formGroup]="formSearchRegister">
+          <input  
+            class="input-field"
+            type="text" 
+            id="searchName" 
+            formControlName="searchName"
+            placeholder="Search"
+            (input)="filtrarDatos()" />
+        </form>
+    </div>
+      
+    <!-- Boton de agregar -->
+    <div class="container-list-product--btn-add">
+        <button class="btn btn-primary" (click)="navigateToAdd()">
+            {{hppresenter.nameBtnAdd}}
+        </button>
+    </div>
+
+    <!-- tabla -->
+    <div class="container-list-product-table">
+        <div class="table-responsive">
+            <app-list-product-financial-table 
+                [registros]="registros"
+                (elementUpdateItems)="updateItems($event)"
+                (idDelete)="deleteItems($event)">
+            </app-list-product-financial-table>
+        </div>
+
+        <div class="container-pag">
+            <!-- label  -->
+            <div class="resultProduct">
+              <strong><span>{{registrosHard.length}}  {{hppresenter.result}}</span></strong>
+            </div>
+  
+            <!-- select -->
+            <div class="pagProduct">
+              <!-- Utiliza ngModel para enlazar la opción seleccionada a la variable opcionSeleccionada -->
+              <select class="styled-select" [(ngModel)]="opcionSeleccionada" (ngModelChange)="limitProduct()" >
+                @for( itemOption of opciones; track itemOption){
+                    <option [value]="itemOption"> {{ itemOption }}</option>
+                }
+              </select>
+            </div>  
+          </div>
+    </div>
+</div>

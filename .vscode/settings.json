@@ -1,0 +1,12 @@
+{
+    "angular.enable-strict-mode-prompt": false,
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#ffdd00",
+        "titleBar.activeBackground": "#ffdd00",
+        "titleBar.activeForeground": "#2c2d2c",
+        "activityBar.activeBackground": "#1b2b5a",
+        "activityBar.foreground": "#f2f1f1"
+    },
+    "appService.defaultWebAppToDeploy": "/subscriptions/30cb2064-46e7-48ba-9263-ac06f3fc093e/resourceGroups/adminTask/providers/Microsoft.Web/sites/adminTask",
+    "appService.deploySubpath": "dist\\prueba-keola"
+}

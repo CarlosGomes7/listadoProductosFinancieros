@@ -1,0 +1,131 @@
+<div class="container-add-product">
+  <div class="title">
+    <h2>Formulario de Registro</h2>
+  </div>
+
+  <div class="formProduct">
+    <form [formGroup]="formAddItems">
+      <div class="container-form">
+        <div class="inputID">
+            <label for="id">ID</label><br>
+            <input
+              class="input-field"
+              [ngClass]="{
+                'error-input':
+                  (formAddItems.get('id')?.invalid &&
+                  formAddItems.get('id')?.touched)|| inputIdValid
+              }"
+              type="text"
+              id="id"
+              formControlName="id"
+              (input)="validateId()"
+            /><br>
+            @if ((formAddItems.get('id')?.invalid && formAddItems.get('id')?.touched) || inputIdValid) {
+                <span class="text-error"> ID no valido </span>
+            }
+          </div>
+
+          <div class="inputName">
+            <label for="nombre">Nombre</label><br>
+            <input
+              class="input-field"
+              [ngClass]="{
+                'error-input':
+                  formAddItems.get('nombre')?.invalid &&
+                  formAddItems.get('nombre')?.touched
+              }"
+              type="text"
+              id="nombre"
+              formControlName="nombre"
+            /><br>
+            @if (formAddItems.get('nombre')?.invalid && formAddItems.get('nombre')?.touched) {
+                <span class="text-error"> Nombre no valido </span>
+            }          
+          </div>
+
+          <div class="inputDescription">
+            <label for="descripcion">Descripción</label><br>
+            <input
+              class="input-field"
+              [ngClass]="{
+                'error-input':
+                  formAddItems.get('descripcion')?.invalid &&
+                  formAddItems.get('descripcion')?.touched
+              }"
+              type="text"
+              id="descripcion"
+              formControlName="descripcion"
+            /><br>
+            @if (formAddItems.get('descripcion')?.invalid && formAddItems.get('descripcion')?.touched) {
+                <span class="text-error"> Descripción no valido </span>
+            }
+            
+          </div>
+
+          <div class="inputLogo">
+            <label for="logotipo"> Logotipo </label><br>
+            <input  class="input-field" [ngClass]="{'error-input':formAddItems.get('logotipo')?.invalid && formAddItems.get('logotipo')?.touched}" type="text" id="logotipo" formControlName="logotipo" /><br>
+            @if (formAddItems.get('logotipo')?.invalid && formAddItems.get('logotipo')?.touched) {
+                <span class="text-error">
+                    Logotipo no valido
+                  </span>
+            }
+          </div>
+
+          <div class="inputDateRelease">
+            <label for="fechaLiberacion"> Fecha de liberación </label><br>
+            <input
+              class="input-field"
+              [ngClass]="{
+                'error-input':
+                  formAddItems.get('fechaLiberacion')?.invalid &&
+                  formAddItems.get('fechaLiberacion')?.touched
+              }"
+              type="date"
+              id="fechaLiberacion"
+              formControlName="fechaLiberacion"
+              placeholder="DD-MM-AAAA"
+              (change)="validationDateRelease()"
+            /><br>
+            @if(formAddItems.get('fechaLiberacion')?.invalid && formAddItems.get('fechaLiberacion')?.touched){
+                <span class="text-error ">
+                    Fecha de liberación no valido
+                  </span> 
+            }
+          </div>
+
+          <div class="inputDateRevision">
+            <label for="fechaRevision"> Fecha de Revisión </label><br>
+            <input
+              class="disabled bg-disable input-field"
+              type="text"
+              readonly="readonly"
+              id="fechaRevision"
+              formControlName="fechaRevision"
+            /><br>
+            @if (formAddItems.get('fechaRevision')?.invalid && formAddItems.get('fechaRevision')?.touched) {
+                <span class="text-error"> Fecha de Revisión no valido </span>
+            }
+          </div>
+
+          <div class="btnReset mt-5 mb-4">
+            <button (click)="clearForm()" class="btn btn-secundary">
+              Reiniciar
+            </button>
+          </div>
+
+          <div class="btnSubmit mt-5 mb-4">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="formAddItems.invalid"
+              [ngClass]="{ disabled: formAddItems.invalid }"
+              (click)="onSubmit()"
+            >
+              Enviar
+            </button>
+          </div>
+      </div>
+    </form>
+  </div>
+</div>

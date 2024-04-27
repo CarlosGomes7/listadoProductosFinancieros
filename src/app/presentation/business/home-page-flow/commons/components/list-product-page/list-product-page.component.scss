@@ -1,0 +1,54 @@
+@import "../../../../../../../assets/styles/helpers/variables";
+
+.container-list-product{
+    background-color:  $white;    
+    padding: 15px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: repeat(2,1fr);
+    grid-template-areas: 
+    "search . btn-add"
+    "tableProduct tableProduct tableProduct" 
+}
+
+
+
+.container-list-product-search{
+    grid-area: search;
+    justify-self: start;
+    align-self: start;
+}
+
+.container-list-product--btn-add{
+    grid-area: btn-add;
+    justify-self: end;
+    align-self: start;
+}
+
+.container-list-product-table{
+    grid-area: tableProduct;
+    margin-top: 10px;
+}
+.table-responsive {
+    overflow-x: auto;
+    height: 400px;
+}
+.container-pag{
+    margin-top: 7px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: 1fr;
+    grid-template-areas: 'totalProduct . pagination';
+    gap:7px;
+}
+
+.resultProduct{
+    grid-area: totalProduct;
+}
+
+.pagProduct{
+    grid-area: pagination;
+    justify-self: end;
+}
+

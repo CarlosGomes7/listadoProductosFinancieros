@@ -1,0 +1,11 @@
+.bg-content{
+  background-color: #ffffff;
+}
+.align-center{
+  width: 100%;
+  text-align: center;
+}
+.container {
+  display: grid;
+  place-items: center; /* Esto centrará el contenido tanto horizontal como verticalmente */
+}

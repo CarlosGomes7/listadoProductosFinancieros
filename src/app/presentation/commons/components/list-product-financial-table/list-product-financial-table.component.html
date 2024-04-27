@@ -1,0 +1,47 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Nombre del producto</th>      
+      <th>Descripción <img [src]="iconDescription" alt="imagen information"> </th>
+      <th>Fecha de liberación <img [src]="iconDescription" alt="imagen information"> </th>
+      <th>Fecha de reestructuración <img [src]="iconDescription" alt="imagen information"></th>
+      <th></th>
+    </tr>    
+  </thead>
+  <tbody>
+    @for (item of registros; track item.id) {
+      <tr>
+        <td><img [src]="item.logo" alt="imagen de logo"></td>
+        <td><span>{{item.name}}</span></td>
+        <td><span>{{item.description}}</span></td>
+        <td><span>{{item.dataRelease | dateListProduct }}</span></td>
+        <td><span>{{item.dataRevision | dateListProduct}}</span></td>
+        <td class="td-options">
+          <img (click)="onClickShowModal(item)" src="assets/images/icons/more-vertical.svg" alt="more information">
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@if (flagShowMenu) {
+  <div class="modal">
+    <div class="modal-content">
+      <span (click)="onClickHideMenu()" class="close">&times;</span>
+      <div class="container-modal-body">
+        <div class="title">
+          <span>Has seleccionado: <strong>{{itemSeleted.name}}</strong></span><br>
+          <span>¿ que deseas hacer ? </span>
+        </div>
+        
+        <div class="btn-left">
+          <button class="btn btn-secundary" (click)="updateItems(itemSeleted)">Editar</button>
+        </div>
+        <div class="btn-rigth">
+          <button class="btn btn-error" (click)="deleteItems(itemSeleted.id)">Eliminar</button>
+        </div>        
+      </div>
+    </div>
+  </div>
+}

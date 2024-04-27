@@ -1,0 +1,19 @@
+@import "../../../../../assets/styles/helpers/variables";
+.error-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 50px auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+.error-container h1 {
+    color: $error-color;
+}
+
+.error-container p {
+    margin-bottom: 10px;
+}

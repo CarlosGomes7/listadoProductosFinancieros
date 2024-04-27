@@ -1,0 +1,26 @@
+@import "../helpers/variables";
+
+// Definición de estilos para el input
+.input-field {
+    width: 140px; // Ancho del input
+    padding: $input-padding;
+    border: $input-border-width $input-border-style $input-border-color;
+    border-radius: 5px;
+    font-size: 16px;
+    
+    // Estilos para cuando el input está enfocado
+    &:focus {
+      outline: none; // Eliminar el contorno predeterminado
+      border-color: $primary-color; // Cambiar el color del borde al enfocar
+    }
+    
+    // Estilos para cuando el input está deshabilitado
+    &:disabled {
+      background-color: #f5f5f5; // Cambiar el color de fondo
+      cursor: not-allowed; // Cambiar el cursor
+    }
+  }
+
+  .error-input{
+    border: $input-border-width $input-border-style $error-color;
+  }

@@ -1,0 +1,21 @@
+@import "../helpers/variables";
+
+/* Estilo base del select */
+.styled-select {
+    appearance: none; /* Oculta el estilo nativo del navegador */
+    -webkit-appearance: none; /* Para navegadores WebKit como Chrome y Safari */
+    -moz-appearance: none; /* Para navegadores Mozilla Firefox */
+    padding: 8px 30px 8px 10px; /* Ajusta el relleno */
+    border: 1px solid #ccc; /* Añade un borde */
+    border-radius: 5px; /* Añade esquinas redondeadas */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); /* Añade una flecha hacia abajo */
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+    background-position: right 10px center; /* Ajusta la posición de la imagen de fondo */
+    min-width: 77px;
+  }
+  
+  /* Estilo cuando el select está enfocado */
+  .styled-select:focus {
+    outline: none; /* Elimina el contorno de enfoque */
+    border-color: $primary-color; 
+  }
