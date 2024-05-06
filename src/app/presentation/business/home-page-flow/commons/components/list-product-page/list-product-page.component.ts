@@ -53,12 +53,11 @@ public deleteProduct$ = inject(ProductFinancialDeleteUseCase);
         this.registros = resp.map((productoF:ProductFinancialModel) => ({ ...productoF }));
         this.registrosHard = this.registros.map((productoF:ProductFinancialModel) => ({ ...productoF }));
         this.utility.closeLoaderSpin();
-    },
-    error=>{
-      console.log(error);
-      this.router.navigate(['/error']);
-      this.utility.closeLoaderSpin();
-    })
+      },
+      error=>{
+        this.utility.closeLoaderSpin();
+        this.router.navigate(['/error']);  
+      })
   } 
 
   limitProduct(){
@@ -77,11 +76,12 @@ public deleteProduct$ = inject(ProductFinancialDeleteUseCase);
   deleteItems(id:string){
     this.utility.showLoaderSpin();
     this.deleteProduct$.excute({'id':id}).subscribe(
-      resp=>{   
-      this.getRegistros();
+      resp=>{     
+        this.getRegistros();
+        this.utility.closeLoaderSpin();
     },
     error=>{
-      console.log(error);
+      console.error(error);
       if (error.status==200) {
         this.getRegistros();
       }else{

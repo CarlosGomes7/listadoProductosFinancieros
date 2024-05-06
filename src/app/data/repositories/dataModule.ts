@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
 import { ProductFinancialImplementationRepository } from "./productFinancial/user-implementation.repository";
 import { ProductFinancialRepository } from "../../domain/repositories/product-financial-repositories";
@@ -8,6 +8,7 @@ import { ProductFinancialGetListUseCase } from "../../domain/useCases/product-fi
 import { ProductFinancialValidationIDUseCase } from "../../domain/useCases/product-financial-validationID.usecase";
 import { ProductFinancialDeleteUseCase } from "../../domain/useCases/product-financial-delete.usecase";
 import { ProductFinancialUpdateUseCase } from "../../domain/useCases/product-financial-update.usecase";
+import { handleErrorInterceptor } from "./productFinancial/interceptors/handle-error.interceptor";
 
 
 const productFinancialAddUseCaseFactory = (productFinancialRepository: ProductFinancialRepository)=> {
@@ -64,12 +65,16 @@ export const ProductFinancialUpdateUseCaseProvider = {
     ProductFinancialValidationIDCaseProvider,
     ProductFinancialDeleteUseCaseUseCaseProvider,
     ProductFinancialUpdateUseCaseProvider,
-    { provide: ProductFinancialRepository, useClass: ProductFinancialImplementationRepository}
+    { provide: ProductFinancialRepository, useClass: ProductFinancialImplementationRepository},
+    // provideHttpClient(withInterceptors(
+    //   [handleErrorInterceptor]
+    // ))
+    {provide: HTTP_INTERCEPTORS, useClass: handleErrorInterceptor, multi: true},
   ],
 
   imports:[
     CommonModule,
-    HttpClientModule,]  
+    HttpClientModule]
 })
 
 export class DataModule {}
